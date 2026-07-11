@@ -69,7 +69,7 @@ export const menu = {
   burgers: ['Burger Toulousain', 'Burger Italien', 'Burger Smash'],
   accompagnements: ['Frites Signature', 'Tenders'],
   sauces: ['Sauce Originale', 'Sauce Sud-Ouest'],
-  boissons: ['Sélection classique'],
+  boissons: ['Coca-Cola', 'Fanta', 'Ice Tea', 'Oasis', 'Perrier'],
 }
 
 export const roadmap = [
