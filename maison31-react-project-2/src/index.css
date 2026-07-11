@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: #c81d25;
+  color: #f5f1ea;
+}
+
+/* Ligne de séparation fine réutilisée dans les grilles (cartes, colonnes de carte, etc.) */
+@layer components {
+  .eyebrow {
+    @apply font-mono text-[11px] tracking-[0.2em] uppercase text-rouge inline-flex items-center gap-2.5 mb-5;
+  }
+  .eyebrow::before {
+    content: '';
+    @apply w-6 h-px bg-rouge;
+  }
+
+  .btn-outline {
+    @apply inline-flex items-center gap-3 font-mono text-xs tracking-[0.14em] uppercase text-blanc border border-blanc-dim/30 px-7 py-4 rounded-sm cursor-pointer bg-transparent transition-colors duration-300 hover:border-rouge hover:bg-rouge/10;
+  }
+
+  .section-pad {
+    @apply py-24 md:py-36;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
