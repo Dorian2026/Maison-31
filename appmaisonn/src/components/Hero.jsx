@@ -1,20 +1,17 @@
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
 import IngredientIcon from './IngredientIcon.jsx'
 
-// Le burger du hero réutilise les mêmes icônes illustrées que la vue éclatée
-// (cohérence visuelle avec la section signature). L'effet de relief ne vient
-// d'aucune librairie 3D : c'est un vrai volume obtenu en CSS pur (perspective +
-// rotation 3D + léger décalage en profondeur de chaque couche), donc aucun poids
-// supplémentaire pour le site.
+// Le burger du hero réutilise les mêmes icônes que la vue éclatée (cohérence
+// visuelle entre le hero et la section signature). Ce n'est volontairement pas
+// l'un des 3 burgers de la carte, mais une représentation générique du concept.
 const HERO_LAYERS = ['bunTop', 'sauceDrizzleRed', 'leaf', 'cheeseDrip', 'patty', 'bunBottom']
 
 export default function Hero() {
-  // mx/my suivent la position de la souris (0 à 1). rotateX/rotateY en dérivent
-  // avec un léger ressort (spring) pour un mouvement doux, pas de bond brusque.
-  const mx = useMotionValue(0.5)
-  const my = useMotionValue(0.5)
-  const rotateY = useSpring(useTransform(mx, [0, 1], [-30, -2]), { stiffness: 60, damping: 20 })
-  const rotateX = useSpring(useTransform(my, [0, 1], [22, 6]), { stiffness: 60, damping: 20 })
+  // Parallax léger de l'illustration au mouvement de la souris.
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const x = useSpring(useTransform(mx, [0, 1], [-10, 10]), { stiffness: 60, damping: 20 })
+  const y = useSpring(useTransform(my, [0, 1], [-10, 10]), { stiffness: 60, damping: 20 })
 
   function handleMouseMove(e) {
     mx.set(e.clientX / window.innerWidth)
@@ -48,28 +45,20 @@ export default function Hero() {
         </a>
       </motion.div>
 
-      {/* perspective: la "profondeur" dans laquelle le burger va tourner */}
-      <div className="relative flex items-center justify-center" style={{ perspective: 1000 }}>
+      <div className="relative flex items-center justify-center">
         <div
           className="absolute w-[380px] h-[380px] rounded-full blur-sm"
           style={{ background: 'radial-gradient(circle, rgba(200,29,37,0.30), transparent 68%)' }}
         />
         <motion.div
-          style={{ rotateX, rotateY, transformStyle: 'preserve-3d' }}
+          style={{ x, y }}
           animate={{ y: [0, -10, 0] }}
           transition={{ y: { duration: 6, repeat: Infinity, ease: 'easeInOut' } }}
-          className="relative w-[min(280px,62vw)] flex flex-col items-center"
+          className="relative w-[min(280px,62vw)] flex flex-col items-center -rotate-[4deg]"
         >
-          <div
-            style={{ filter: 'drop-shadow(0 26px 34px rgba(0,0,0,.5))' }}
-            className="w-full flex flex-col items-center"
-          >
+          <div style={{ filter: 'drop-shadow(0 26px 34px rgba(0,0,0,.5))' }} className="w-full flex flex-col items-center">
             {HERO_LAYERS.map((visual, i) => (
-              // translateZ décale chaque couche en profondeur : combiné à la rotation
-              // 3D du parent, ça donne un vrai sentiment de volume/épaisseur.
-              <div key={i} style={{ transform: `translateZ(${i * 5}px)` }} className="w-full -mt-0.5">
-                <IngredientIcon visual={visual} className="w-full" />
-              </div>
+              <IngredientIcon key={i} visual={visual} className="w-full -mt-0.5" />
             ))}
           </div>
         </motion.div>
