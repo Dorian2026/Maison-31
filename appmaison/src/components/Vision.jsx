@@ -61,13 +61,13 @@ export default function Vision() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10"
+          className="flex flex-wrap justify-center gap-px bg-white/10 border border-white/10"
         >
           {points.map((p) => (
             <motion.div
               key={p.num}
               variants={fadeUp}
-              className="bg-noir hover:bg-noir-2 transition-colors duration-500 p-9"
+              className="w-full sm:w-[calc(50%-0.5px)] lg:w-[calc(33.3333%-0.6667px)] bg-noir hover:bg-noir-2 transition-colors duration-500 p-9"
             >
               <span className="block font-mono text-[11px] tracking-[0.1em] text-rouge mb-6">{p.num}</span>
               <h3 className="text-lg mb-3 leading-snug">{p.title}</h3>
