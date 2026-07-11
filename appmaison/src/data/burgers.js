@@ -7,25 +7,6 @@
 
 export const burgers = [
   {
-    id: 'smash',
-    tag: 'Le burger accessible',
-    name: 'Burger Smash',
-    teaser:
-      "Simple. Ultra maîtrisé. Deux steaks smashés, un cheddar affiné, une sauce pensée pour lui seul.",
-    intro:
-      "Le burger accessible. Simple, ultra maîtrisé — chaque couche est là pour renforcer la précédente, sans effet inutile.",
-    layers: [
-      { visual: 'bunTop', name: 'Bun brioché', desc: 'Moelleux, légèrement doré, toasté à la commande.' },
-      { visual: 'patty', name: 'Double steak smash', desc: 'Deux steaks pressés à la plancha, croûte caramélisée.' },
-      { visual: 'cheeseDrip', name: 'Cheddar affiné', desc: 'Fondu lentement, pour une texture parfaite.' },
-      { visual: 'onion', name: 'Oignons confits', desc: 'Cuits longuement, sucrés et fondants.' },
-      { visual: 'pickle', name: 'Pickles', desc: "Acidité franche, pour l'équilibre." },
-      { visual: 'sauceDrizzleRed', name: 'Sauce Originale', desc: 'La signature. Créée pour ce burger uniquement.' },
-      { visual: 'leaf', name: 'Salade', desc: 'Fraîcheur et croquant en finale.' },
-      { visual: 'bunBottom', name: 'Bun brioché', desc: 'Base identique, pour un équilibre parfait.' },
-    ],
-  },
-  {
     id: 'toulousain',
     tag: 'Le burger signature',
     name: 'Burger Toulousain',
@@ -63,10 +44,29 @@ export const burgers = [
       { visual: 'bunBottom', name: 'Bun brioché', desc: 'Base identique, pour un équilibre parfait.' },
     ],
   },
+  {
+    id: 'smash',
+    tag: 'Le burger accessible',
+    name: 'Burger Smash',
+    teaser:
+      "Simple. Ultra maîtrisé. Deux steaks smashés, un cheddar affiné, une sauce pensée pour lui seul.",
+    intro:
+      "Le burger accessible. Simple, ultra maîtrisé — chaque couche est là pour renforcer la précédente, sans effet inutile.",
+    layers: [
+      { visual: 'bunTop', name: 'Bun brioché', desc: 'Moelleux, légèrement doré, toasté à la commande.' },
+      { visual: 'patty', name: 'Double steak smash', desc: 'Deux steaks pressés à la plancha, croûte caramélisée.' },
+      { visual: 'cheeseDrip', name: 'Cheddar affiné', desc: 'Fondu lentement, pour une texture parfaite.' },
+      { visual: 'onion', name: 'Oignons confits', desc: 'Cuits longuement, sucrés et fondants.' },
+      { visual: 'pickle', name: 'Pickles', desc: "Acidité franche, pour l'équilibre." },
+      { visual: 'sauceDrizzleRed', name: 'Sauce Originale', desc: 'La signature. Créée pour ce burger uniquement.' },
+      { visual: 'leaf', name: 'Salade', desc: 'Fraîcheur et croquant en finale.' },
+      { visual: 'bunBottom', name: 'Bun brioché', desc: 'Base identique, pour un équilibre parfait.' },
+    ],
+  },
 ]
 
 export const menu = {
-  burgers: ['Burger Smash', 'Burger Toulousain', 'Burger Italien'],
+  burgers: ['Burger Toulousain', 'Burger Italien', 'Burger Smash'],
   accompagnements: ['Frites Signature', 'Tenders'],
   sauces: ['Sauce Originale', 'Sauce Sud-Ouest'],
   boissons: ['Sélection classique'],
